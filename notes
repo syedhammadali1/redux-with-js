@@ -16,3 +16,13 @@ funcion orderCake(){
 }
 
 # order cake is a action creator
+
+
+
+# store 
+
+ 1) create a store with createStore(reducer) 
+ 2) store methods
+  # getState() get store states
+  # dispatch() call an action which will help for updating state
+  # subscribe() this will be called when store state will be  changed

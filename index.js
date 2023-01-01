@@ -1,3 +1,5 @@
+const { createStore } = require("redux");
+
 const CAKE_ORDERED = 'CAKE_ORDERED';
 
 function orderCake(){
@@ -26,3 +28,16 @@ const reducer = (state = initialeState , action) => {
             break;
     }
 }
+
+
+
+const store = createStore(reducer);
+
+const unsubscribe =  store.subscribe(() => console.log(store.getState().numOFCake))
+
+store.dispatch(orderCake())
+store.dispatch(orderCake())
+
+unsubscribe();
+
+store.dispatch(orderCake())
