@@ -26,3 +26,6 @@ funcion orderCake(){
   # getState() get store states
   # dispatch() call an action which will help for updating state
   # subscribe() this will be called when store state will be  changed
+
+
+  combineReducers() combine 2 reducers
