@@ -1,10 +1,17 @@
 const { createStore } = require("redux");
 
 const CAKE_ORDERED = 'CAKE_ORDERED';
+const CAKE_RESTOCKED = 'CAKE_RESTOCKED';
 
 function orderCake(){
     return {
         type:CAKE_ORDERED
+    }
+}
+function cake_restock(qty = 1){
+    return {
+        type:CAKE_RESTOCKED,
+        quantity:qty
     }
 }
 
@@ -22,6 +29,12 @@ const reducer = (state = initialeState , action) => {
                 numOFCake:state.numOFCake - 1
             }
             break;
+        case CAKE_RESTOCKED:
+            return {
+                ...state,
+                numOFCake:state.numOFCake + action.quantity
+            }
+            break;
     
         default:
             return state;
@@ -37,6 +50,7 @@ const unsubscribe =  store.subscribe(() => console.log(store.getState().numOFCak
 
 store.dispatch(orderCake())
 store.dispatch(orderCake())
+store.dispatch(cake_restock(6))
 
 unsubscribe();
 
