@@ -1,0 +1,18 @@
+# three principles of redux
+
+ 1) All of your states stored within an object in your store
+
+ 2) the only way to update state is dispatch an action which an an object that describe what happened.
+
+ 3) write pure reducer (how to update state)
+
+
+# action creator is a function which return action object like
+
+funcion orderCake(){
+    return {
+        type:'CAKE_ORDERED'
+    }
+}
+
+# order cake is a action creator
