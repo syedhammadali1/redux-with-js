@@ -1,4 +1,4 @@
-const { createStore } = require("redux");
+const { createStore, bindActionCreators } = require("redux");
 
 const CAKE_ORDERED = 'CAKE_ORDERED';
 const CAKE_RESTOCKED = 'CAKE_RESTOCKED';
@@ -8,7 +8,7 @@ function orderCake(){
         type:CAKE_ORDERED
     }
 }
-function cake_restock(qty = 1){
+function restockCake(qty = 1){
     return {
         type:CAKE_RESTOCKED,
         quantity:qty
@@ -48,9 +48,14 @@ const store = createStore(reducer);
 
 const unsubscribe =  store.subscribe(() => console.log(store.getState().numOFCake))
 
-store.dispatch(orderCake())
-store.dispatch(orderCake())
-store.dispatch(cake_restock(6))
+// store.dispatch(orderCake())
+// store.dispatch(orderCake())
+// store.dispatch(restockCake(6))
+
+const action =  bindActionCreators({orderCake,restockCake},store.dispatch);
+
+action.orderCake()
+action.restockCake(10)
 
 unsubscribe();
 
